@@ -36,14 +36,8 @@ public class MobileWalletController {
 
     @PostMapping("/open-account")
     public ResponseEntity<CreateWalletResponse> openAccount(@RequestBody CreateWalletRequest newMobileWallet) {
-        mobileWalletService.addNewAccount(newMobileWallet);
 
-        CreateWalletResponse createWalletResponse = new CreateWalletResponse(
-                ResponseEnum.SUCCESS.getCode(),
-                ResponseEnum.SUCCESS.getMessage(),
-                ResponseEnum.SUCCESS.getDescription());
-
-        return new ResponseEntity<>(createWalletResponse, HttpStatus.OK);
+        return new ResponseEntity<>(mobileWalletService.addNewAccount(newMobileWallet), HttpStatus.OK);
 
     }
 

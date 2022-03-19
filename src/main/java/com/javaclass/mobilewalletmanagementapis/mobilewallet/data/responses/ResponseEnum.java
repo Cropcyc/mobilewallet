@@ -2,7 +2,8 @@ package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
 public enum ResponseEnum {
     SUCCESS("000", "Success", "Account opened successfully"),
-    FAILURE("900", "Failed", "Didn't work");
+    FAILURE("900", "Failed", "Didn't work"),   
+    FAILURE_902("902","Failed","Bad request");
 
     private String code;
     private String message;

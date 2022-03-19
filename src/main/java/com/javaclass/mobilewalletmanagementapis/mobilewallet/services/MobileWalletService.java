@@ -5,6 +5,8 @@ import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.Accou
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.CreateWalletRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.DisableAccountRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.FetchAccountRequest;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.CreateWalletResponse;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.ResponseEnum;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.entities.MobileWallet;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.respositories.MobileWalletRepository;
 
@@ -23,7 +25,7 @@ public class MobileWalletService {
         this.mobileWalletRepository = mobileWalletRepository;
     }
 
-    public void addNewAccount(CreateWalletRequest newMobileWallet) {
+    public CreateWalletResponse addNewAccount(CreateWalletRequest newMobileWallet) {
 
         // if phone exists, raise exception
 
@@ -38,6 +40,7 @@ public class MobileWalletService {
         MobileWallet mobileWallet = mapper.convertValue(newMobileWallet, MobileWallet.class);
 
         mobileWalletRepository.save(mobileWallet);
+        return new CreateWalletResponse(ResponseEnum.SUCCESS);
     }
 
     public List<MobileWallet> fetchAccount(FetchAccountRequest fetchAccountRequest) {
